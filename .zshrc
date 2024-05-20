@@ -31,11 +31,7 @@ function command_not_found_handler {
 }
 
 # Detect the AUR wrapper
-if pacman -Qi yay &>/dev/null ; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null ; then
-   aurhelper="paru"
-fi
+aurhelper="yay"
 
 function in {
     local pkg="$1"
@@ -58,7 +54,8 @@ alias pa='$aurhelper -Ss' # list availabe package
 alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias vc='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
-
+alias nv="nvim"
+#
 # Handy change dir shortcuts
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -67,7 +64,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias x="exit"
 alias sync-brain="cd ~/Sync/SecondBrain && git pull && git add . && git commit -am \"Automated update.\" && git push"
-alias export-installed-packages="pacman -Qqe > ./Sync/arch_installs.txt "
+alias export-installed-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qqe > ~/HyDE/Scripts/arch_installs.lst"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
