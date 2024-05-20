@@ -7,6 +7,12 @@ config add <file>
 config commit -m "Example"
 config push
 ```
+
+### Update
+```
+config pull
+```
+
 ### New System
 ```
 git clone --bare git@github.com:CarterFaceySmith/dotfiles.git $HOME/dotfiles
