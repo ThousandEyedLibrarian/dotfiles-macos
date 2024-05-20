@@ -17,7 +17,7 @@ config pull
 ```
 git clone --bare git@github.com:CarterFaceySmith/dotfiles.git $HOME/dotfiles
 alias alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-config checkoout
+config checkout
 ```
 
 ### References
