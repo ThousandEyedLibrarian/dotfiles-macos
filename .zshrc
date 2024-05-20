@@ -68,6 +68,8 @@ alias .5='cd ../../../../..'
 alias x="exit"
 alias sync-brain="cd ~/Sync/SecondBrain && git pull && git add . && git commit -am \"Automated update.\" && git push"
 alias export-installed-packages="pacman -Qqe > ./Sync/arch_installs.txt "
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
