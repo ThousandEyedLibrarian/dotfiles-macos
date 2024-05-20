@@ -1,0 +1,27 @@
+[user]
+	email = carterfaceysmith@gmail.com
+	name = CarterFaceySmith
+	signingkey = 3F3EEB4860E8496EAFC4B1AAE7C8002607497D2D
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[init]
+	defaultBranch = main
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+[rebase]
+  autosquash = true
+[safe]
+	directory = /Users/carter/.local/share/nvim/
+	directory = /Users/carter/.local/share/nvim/lazy/
+	directory = /Users/carter/.local/share/nvim/lazy/nvim-treesitter/parser
+	directory = *
+[push]
+	autoSetupRemote = true
+[commit]
+	gpgsign = true
+[status]
+	showUntrackedFiles = no
