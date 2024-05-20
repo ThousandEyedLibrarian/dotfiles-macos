@@ -1,27 +1,63 @@
 [user]
-	email = carterfaceysmith@gmail.com
+	email = carterfs@proton.me
 	name = CarterFaceySmith
-	signingkey = 3F3EEB4860E8496EAFC4B1AAE7C8002607497D2D
+	signingkey = E557A48E2BC22C3D
+	useConfigOnly = true
+
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
 [init]
 	defaultBranch = main
+
 [core]
-  editor = nvim
-  excludesfile = ~/.gitignore_global
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	compression = 9
+	filemode = false
+
+
 [rebase]
-  autosquash = true
+	autosquash = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
+
 [safe]
 	directory = /Users/carter/.local/share/nvim/
 	directory = /Users/carter/.local/share/nvim/lazy/
 	directory = /Users/carter/.local/share/nvim/lazy/nvim-treesitter/parser
 	directory = *
+
 [push]
 	autoSetupRemote = true
+
+
 [commit]
 	gpgsign = true
+
 [status]
+	short = true
 	showUntrackedFiles = no
+[help]
+	autoCorrect = prompt
+
+[branch]
+	sort = -committerdate
+
+[color]
+	ui = auto
+
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
