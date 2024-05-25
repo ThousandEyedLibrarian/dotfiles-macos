@@ -1,7 +1,6 @@
 [user]
 	email = carterfs@proton.me
 	name = CarterFaceySmith
-	signingkey = E557A48E2BC22C3D
 	useConfigOnly = true
 
 
@@ -45,7 +44,7 @@
 
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [status]
 	short = true
