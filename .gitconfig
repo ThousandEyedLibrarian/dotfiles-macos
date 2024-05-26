@@ -3,7 +3,6 @@
 	name = CarterFaceySmith
 	useConfigOnly = true
 
-
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -18,7 +17,6 @@
 	excludesfile = ~/.gitignore_global
 	compression = 9
 	filemode = false
-
 
 [rebase]
 	autosquash = true
@@ -42,7 +40,6 @@
 [push]
 	autoSetupRemote = true
 
-
 [commit]
 	gpgsign = false
 	template = Sync/personalCode/commit-conventions.txt
@@ -50,6 +47,7 @@
 [status]
 	short = true
 	showUntrackedFiles = no
+
 [help]
 	autoCorrect = prompt
 
@@ -58,6 +56,7 @@
 
 [color]
 	ui = auto
+
 
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
