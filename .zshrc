@@ -55,16 +55,16 @@ alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias vc='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
 alias nv="nvim"
-#
+#=
 # Handy change dir shortcuts
 alias ..='cd ..'
-alias ...='cd ../..'
+alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias x="exit"
 alias sync-brain="cd ~/Sync/SecondBrain && git pull && git add . && git commit -am \"Automated update.\" && git push"
-alias export-installed-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qqe > ~/HyDE/Scripts/arch_installs.lst"
+alias export-arch-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qqe > ~/HyDE/Scripts/arch_installs.lst"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
