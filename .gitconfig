@@ -14,7 +14,7 @@
 	defaultBranch = main
 
 [core]
-	editor = nvim
+	editor = nvim +16 -c 'startinsert'
 	excludesfile = ~/.gitignore_global
 	compression = 9
 	filemode = false
@@ -45,6 +45,7 @@
 
 [commit]
 	gpgsign = false
+	template = Sync/personalCode/commit-conventions.txt
 
 [status]
 	short = true
