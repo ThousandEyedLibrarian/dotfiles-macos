@@ -42,7 +42,7 @@
 
 [commit]
 	gpgsign = false
-	template = Sync/personalCode/commit-conventions.txt
+	template = ~/Sync/personalCode/commit-conventions.txt
 
 [status]
 	short = true

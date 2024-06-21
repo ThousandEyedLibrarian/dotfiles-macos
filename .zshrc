@@ -63,10 +63,10 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias x="exit"
-alias sync-brain="cd ~/Sync/SecondBrain && git pull && git add . && git commit -am \"Automated update.\" && git push"
+#alias sync-brain="cd ~/Sync/SecondBrain && git pull && git add . && git commit -am \"Automated update.\" && git push"
 alias export-arch-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qqe > ~/HyDE/Scripts/arch_installs.lst"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
+alias sync-brain="./bin/sync-brain"
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
