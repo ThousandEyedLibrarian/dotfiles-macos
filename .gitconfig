@@ -2,6 +2,7 @@
 	email = carterfs@proton.me
 	name = CarterFaceySmith
 	useConfigOnly = true
+	name = Carter
 
 [filter "lfs"]
 	required = true
