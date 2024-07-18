@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
+
 # Path to powerlevel10k theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
@@ -55,18 +56,34 @@ alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias vc='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
 alias nv="nvim"
-#=
-# Handy change dir shortcuts
+
+alias gs='git status -sb'
+alias gcc='git checkout'
+alias gcm='git checkout master'
+alias gaa='git add --all'
+alias gc='git commit -m $2'
+alias push='git push'
+alias gpo='git push origin'
+alias pull='git pull'
+alias clone='git clone'
+alias stash='git stash'
+alias pop='git stash pop'
+alias ga='git add'
+alias gb='git branch'
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gm='git merge'
+
 alias ..='cd ..'
 alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias x="exit"
-#alias sync-brain="cd ~/Sync/SecondBrain && git pull && git add . && git commit -am \"Automated update.\" && git push"
+
 alias export-arch-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qqe > ~/HyDE/Scripts/arch_installs.lst"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias sync-brain="~/bin/sync-brain"
+
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
