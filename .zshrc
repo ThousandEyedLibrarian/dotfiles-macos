@@ -91,6 +91,9 @@ alias mkdir='mkdir -p'
 # Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
 alias ssh='kitten ssh'
 
+export ANDROID_HOME=$HOME/carter/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-toolsS
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export GPG_TTY=$(tty)
