@@ -84,6 +84,7 @@ alias x="exit"
 alias export-arch-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qqe > ~/HyDE/Scripts/arch_installs.lst"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias sync-brain="~/bin/sync-brain"
+alias mirror-display='xrandr --output HDMI-A-1 --mode $(xrandr --query | grep HDMI-A-1 | awk "{print \$3}") --same-as eDP-1'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
@@ -95,5 +96,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export GPG_TTY=$(tty)
+export ANDROID_HOME=/home/carter/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Created by `pipx` on 2024-04-06 02:43:18
+export QTDIR=/usr/lib/qt5
 export PATH="$PATH:/home/carter/.local/bin"
