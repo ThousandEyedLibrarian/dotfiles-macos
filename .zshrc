@@ -85,6 +85,7 @@ alias export-arch-packages="pacman -Qqe > ~/Sync/arch_installs.lst && pacman -Qq
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias sync-brain="~/bin/sync-brain"
 alias mirror-display='xrandr --output HDMI-A-1 --mode $(xrandr --query | grep HDMI-A-1 | awk "{print \$3}") --same-as eDP-1'
+alias 'pipx install -r requirements.txt'='pipx runpip cookicutter install -r requirements.txt'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
