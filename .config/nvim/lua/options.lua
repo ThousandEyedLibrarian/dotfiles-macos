@@ -3,7 +3,7 @@ vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 
 -- Disable mouse mode
 vim.o.mouse = ''
@@ -34,6 +34,12 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Concealer for Neorg
 vim.o.conceallevel=2
+
+-- 
+vim.o.expandtab = true
+vim.o.tabstop=2
+vim.o.shiftwidth=2
+vim.o.softtabstop=2
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key

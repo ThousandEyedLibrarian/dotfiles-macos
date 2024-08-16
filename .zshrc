@@ -31,6 +31,10 @@ function command_not_found_handler {
     return 127
 }
 
+function pipx_inject_requirements () {
+    pipx runpip $1 install -r $2
+}
+
 # Detect the AUR wrapper
 aurhelper="yay"
 
@@ -54,7 +58,7 @@ alias pl='$aurhelper -Qs' # list installed package
 alias pa='$aurhelper -Ss' # list availabe package
 alias pc='$aurhelper -Sc' # remove unused cache
 alias po='$aurhelper -Qtdq | $aurhelper -Rns -' # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
-alias vc='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
+#alias vc='code --ozone-platform-hint=wayland --disable-gpu' # gui code editor
 alias nv="nvim"
 
 alias gs='git status -sb'
@@ -86,6 +90,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias sync-brain="~/bin/sync-brain"
 alias mirror-display='xrandr --output HDMI-A-1 --mode $(xrandr --query | grep HDMI-A-1 | awk "{print \$3}") --same-as eDP-1'
 alias 'pipx install -r requirements.txt'='pipx runpip cookicutter install -r requirements.txt'
+alias search='fzf --preview="bat --color=always {}"'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
