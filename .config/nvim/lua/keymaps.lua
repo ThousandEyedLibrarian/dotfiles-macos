@@ -39,3 +39,5 @@ vim.api.nvim_set_keymap("n", "<leader>nn", ":Noice dismiss<CR>", {noremap=true})
 vim.keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>",
   {silent = true, noremap = true}
 )
+
+vim.keymap.set('n', "<C-n>", ':Neotree filesystem toggle left<enter>')
