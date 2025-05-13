@@ -49,6 +49,10 @@ alias rebalance='cd ~/Sync/PersonalCode/PLNK ; source venv/bin/activate ; python
 alias sync-brain="cd ~/Sync/SecondBrain ; git pull ; git add . ; git commit -am \"Automated update.\" ; git push ; cd -"
 alias nsusb="java -jar ~/Sync/personalCode/ns-usbloader-7.2-m1.jar"
 alias love="/Applications/love.app/Contents/MacOS/love"
+alias c="xclip"
+alias v="xclip -o"
+alias cs="xclip -selection clipboard"
+alias vs="xclip -o -selection clipboard"
 
 # Environment variables
 export PATH="$PATH:$HOME/.local/bin"
@@ -63,3 +67,19 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 eval "$(starship init zsh)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
