@@ -83,3 +83,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+eval "$(alias sketchybar="$HOME/.config/sketchybar/set-bar-mode.sh")"
