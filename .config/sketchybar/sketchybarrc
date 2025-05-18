@@ -17,13 +17,12 @@ bar=(
   height=30
   padding_left=16
   padding_right=16
-  blur_radius=0
-  shadow=off
-  color=0x00000000
+  blur_radius=0  # Removed blur for true transparency
+  shadow=off      # Removed shadow
+  color=0x00000000  # Fully transparent (alpha channel set to 00)
   font_smoothing=on
 )
-
-sketchybar --bar
+sketchybar --bar "${bar[@]}"
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
