@@ -73,7 +73,7 @@ done
 # only the properties deviating from the current defaults need to be set
 sketchybar --add item Carter left \
            --set      Carter icon="librarian" label.drawing=off \
-           icon.font.size=10 icon.padding_left=525
+           icon.font.size=10 icon.padding_left=500
 # sketchybar --add item chevron left \
 #           --set chevron icon= label.drawing=off \
 #           --add item front_app left \
