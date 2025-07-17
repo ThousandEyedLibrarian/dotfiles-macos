@@ -14,6 +14,112 @@ function pipx_inject_requirements () {
     pipx runpip $1 install -r $2
 }
 
+# gt - Go To directory function
+# Usage: gt "directory_name"
+# Searches for directories using fd and navigates to the first result
+
+function gt() {
+    # Check if argument is provided
+    if [ $# -eq 0 ]; then
+        echo "Usage: gt <directory_name>"
+        echo "Example: gt Documents"
+        return 1
+    fi
+
+    # Search for directories using fd
+    local search_term="$1"
+    local result=$(fd --type d --max-results 1 "$search_term" 2>/dev/null)
+    
+    # Check if any results were found
+    if [ -z "$result" ]; then
+        echo "No directory found matching: $search_term"
+        return 1
+    fi
+    
+    # Navigate to the directory
+    echo "Navigating to: $result"
+    cd "$result" || {
+        echo "Failed to navigate to: $result"
+        return 1
+    }
+    
+    # Show current location
+    pwd
+}
+
+# Alternative version with more search options
+function gtf() {
+    # gtf - Go To directory with Fuzzy matching
+    # Usage: gtf "partial_name"
+    
+    if [ $# -eq 0 ]; then
+        echo "Usage: gtf <partial_directory_name>"
+        return 1
+    fi
+
+    local search_term="$1"
+    
+    # Use fd with case-insensitive fuzzy matching
+    local result=$(fd --type d --ignore-case --max-results 1 ".*$search_term.*" 2>/dev/null)
+    
+    if [ -z "$result" ]; then
+        echo "No directory found matching: $search_term"
+        # Try a broader search
+        echo "Trying broader search..."
+        result=$(fd --type d --ignore-case --max-results 5 "$search_term" 2>/dev/null | head -1)
+        
+        if [ -z "$result" ]; then
+            echo "Still no results found."
+            return 1
+        fi
+    fi
+    
+    echo "Navigating to: $result"
+    cd "$result" || {
+        echo "Failed to navigate to: $result"
+        return 1
+    }
+    
+    pwd
+}
+
+# Show multiple results version
+function gts() {
+    # gts - Go To directory with Selection
+    # Shows multiple results and lets you choose
+    
+    if [ $# -eq 0 ]; then
+        echo "Usage: gts <directory_name>"
+        return 1
+    fi
+
+    local search_term="$1"
+    local results=$(fd --type d --ignore-case "$search_term" 2>/dev/null)
+    
+    if [ -z "$results" ]; then
+        echo "No directories found matching: $search_term"
+        return 1
+    fi
+    
+    # Count results
+    local count=$(echo "$results" | wc -l)
+    
+    if [ "$count" -eq 1 ]; then
+        echo "Found 1 match:"
+        echo "$results"
+        echo "Navigating to: $results"
+        cd "$results"
+        pwd
+    else
+        echo "Found $count matches:"
+        echo "$results" | nl
+        echo
+        echo "Navigating to first result: $(echo "$results" | head -1)"
+        cd "$(echo "$results" | head -1)"
+        pwd
+    fi
+}
+
 # Helpful aliases
 alias  l='ls -lh' # long list
 alias ls='ls -1' # short list

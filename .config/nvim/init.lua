@@ -1,13 +1,13 @@
 -- ================================================================================================
 -- title : Suckless NeoVim Config
--- author: Radley E. Sidwell-lewis
+-- author: Librarian, based on initial work by Radley E. Sidwell-lewis
 -- ================================================================================================
 
 -- theme & transparency
-vim.cmd.colorscheme("unokai")
+vim.cmd.colorscheme("retrobox")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" }) 
 
 -- Basic settings
 vim.opt.number = true                              -- Line numbers
@@ -53,7 +53,7 @@ vim.opt.backup = false                             -- Don't create backup files
 vim.opt.writebackup = false                        -- Don't create backup before writing
 vim.opt.swapfile = false                           -- Don't create swap files
 vim.opt.undofile = true                            -- Persistent undo
-vim.opt.undodir = vim.fn.expand("~/.vim/undodir")  -- Undo directory
+vim.opt.undodir = vim.fn.expand("~/.nvim/undodir") -- Undo directory
 vim.opt.updatetime = 300                           -- Faster completion
 vim.opt.timeoutlen = 500                           -- Key timeout duration
 vim.opt.ttimeoutlen = 0                            -- Key code timeout
@@ -348,7 +348,8 @@ local function CloseFloatingTerminal()
 end
 
 -- Key mappings
-vim.keymap.set("n", "<leader>t", FloatingTerminal, { noremap = true, silent = true, desc = "Toggle floating terminal" })
+vim.keymap.set("n", "<leader>t", FloatingTerminal, 
+            { noremap = true, silent = true, desc = "Toggle floating terminal" })
 vim.keymap.set("t", "<Esc>", function()
   if terminal_state.is_open then
     vim.api.nvim_win_close(terminal_state.win, false)
@@ -460,6 +461,8 @@ local function file_type()
     json = "[JSON]",
     markdown = "[MD]",
     vim = "[VIM]",
+    cpp = "[CPP]",
+    c = "[C']",
     sh = "[SH]",
   }
 
@@ -483,13 +486,15 @@ end
 -- File size
 local function file_size()
   local size = vim.fn.getfsize(vim.fn.expand('%'))
-  if size < 0 then return "" end
+  if size < 0 then return "EMPTY" end
   if size < 1024 then
     return size .. "B "
   elseif size < 1024 * 1024 then
-    return string.format("%.1fK", size / 1024)
+    return string.format("%.1fKB", size / 1024)
+  elseif size < 1024 * 1024 * 1024 then
+    return string.format("%.1fMB", size / 1024 / 1024)
   else
-    return string.format("%.1fM", size / 1024 / 1024)
+    return string.format("%.1fGB", size / 1024 / 1024 / 1024)
   end
 end
 
@@ -553,3 +558,132 @@ local function setup_dynamic_statusline()
 end
 
 setup_dynamic_statusline()
+
+-- ============================================================================
+-- LSP CONFIGURATION
+-- ============================================================================
+
+-- LSP servers setup (requires manual installation of language servers)
+-- C/C++: sudo apt install clangd (or brew install llvm)
+-- CSS/HTML/JS: npm install -g vscode-langservers-extracted typescript-language-server
+-- Python: npm install -g pyright
+-- Rust: rustup component add rust-analyzer
+
+local lsp_servers = {
+  clangd = {
+    cmd = { "clangd", "--background-index" },
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+  },
+  cssls = {
+    cmd = { "vscode-css-language-server", "--stdio" },
+    filetypes = { "css", "scss", "less" },
+  },
+  html = {
+    cmd = { "vscode-html-language-server", "--stdio" },
+    filetypes = { "html" },
+  },
+  tsserver = {
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  },
+  rust_analyzer = {
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+  },
+  pyright = {
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+  },
+}
+
+-- LSP on_attach function
+local function lsp_on_attach(client, bufnr)
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  
+  -- Key mappings
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, vim.tbl_extend('force', opts, { desc = "Go to declaration" }))
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = "Go to definition" }))
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, vim.tbl_extend('force', opts, { desc = "Hover documentation" }))
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, vim.tbl_extend('force', opts, { desc = "Go to implementation" }))
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, vim.tbl_extend('force', opts, { desc = "Signature help" }))
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = "Rename symbol" }))
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('force', opts, { desc = "Code action" }))
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', opts, { desc = "Find references" }))
+  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, vim.tbl_extend('force', opts, { desc = "Format buffer" }))
+  
+  -- Diagnostic mappings
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, vim.tbl_extend('force', opts, { desc = "Previous diagnostic" }))
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, vim.tbl_extend('force', opts, { desc = "Next diagnostic" }))
+  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, vim.tbl_extend('force', opts, { desc = "Diagnostics to loclist" }))
+  
+  -- Enable completion triggered by <c-x><c-o>
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  
+  -- Highlight symbol under cursor
+  if client.server_capabilities.documentHighlightProvider then
+    vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+    vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+    vim.api.nvim_create_autocmd("CursorHold", {
+      callback = vim.lsp.buf.document_highlight,
+      buffer = bufnr,
+      group = "lsp_document_highlight",
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      callback = vim.lsp.buf.clear_references,
+      buffer = bufnr,
+      group = "lsp_document_highlight",
+    })
+  end
+end
+
+-- Setup LSP servers
+for server, config in pairs(lsp_servers) do
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = config.filetypes,
+    callback = function()
+      vim.lsp.start({
+        name = server,
+        cmd = config.cmd,
+        root_dir = vim.fs.dirname(vim.fs.find({'.git', 'package.json', 'Makefile', 'Cargo.toml'}, { upward = true })[1]),
+        on_attach = lsp_on_attach,
+      })
+    end,
+  })
+end
+
+-- Diagnostic settings
+vim.diagnostic.config({
+  virtual_text = false,  -- Disable inline diagnostics
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+})
+
+-- Show diagnostics in hover window
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
+
+-- Diagnostic signs
+local signs = { Error = "✘", Warn = "▲", Hint = "⚡", Info = "ℹ" }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
