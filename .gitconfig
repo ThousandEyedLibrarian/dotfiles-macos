@@ -1,6 +1,6 @@
 [user]
-	email = carterfs@proton.me
-	name = CarterFaceySmith
+	email = carterfs@pm.me
+	name = Librarian
 	useConfigOnly = true
 	name = Carter
 
@@ -11,7 +11,7 @@
 	process = git-lfs filter-process
 
 [init]
-	defaultBranch = main
+	defaultBranch = master
 
 [core]
 	editor = nvim +16 -c 'startinsert'
@@ -35,7 +35,6 @@
 [safe]
 	directory = /Users/carter/.local/share/nvim/
 	directory = /Users/carter/.local/share/nvim/lazy/
-	directory = /Users/carter/.local/share/nvim/lazy/nvim-treesitter/parser
 	directory = *
 
 [push]
