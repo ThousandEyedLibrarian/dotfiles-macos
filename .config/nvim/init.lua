@@ -560,6 +560,46 @@ end
 setup_dynamic_statusline()
 
 -- ============================================================================
+-- MINIMAL TELESCOPE CONFIGURATION
+-- ============================================================================
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({"git", "clone", "--filter=blob:none", 
+    "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath})
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = " "
+
+-- Plugin setup
+require("lazy").setup({
+  -- Telescope and its only required dependency
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      -- Minimal telescope setup
+      require('telescope').setup({
+        defaults = {
+          file_ignore_patterns = { "%.git/", "node_modules/", "%.o", "%.a", "%.out" },
+          layout_strategy = 'horizontal',
+          layout_config = { height = 0.8, width = 0.8 },
+        },
+      })
+      
+      -- Essential keymaps
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
+      vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent files' })
+    end,
+  },
+})
+
+-- ============================================================================
 -- LSP CONFIGURATION
 -- ============================================================================
 

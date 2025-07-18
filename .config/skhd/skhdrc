@@ -1,10 +1,11 @@
 ####### Application Shortcuts #############
-# Open applications with ctrl key
+# Open applications with ctrl/option key
+# Applications I normally only have a single instance of don't force a new instance
 alt - m : open -a "Proton Mail"
-alt - f : open -a "Finder"
-alt - i : open -a "Firefox"
+alt - f : open -n -a "Finder"
+alt - i : open -n -a "Zen Browser"
 alt - p : open -a "KeePassXC"
-alt - t : open -a "kitty"
+alt - t : open -n -a "kitty"
 
 # change layout
 alt - e : yabai -m space --layout bsp
