@@ -2,7 +2,6 @@
 	email = carterfs@pm.me
 	name = Librarian
 	useConfigOnly = true
-	name = Carter
 
 [filter "lfs"]
 	required = true
