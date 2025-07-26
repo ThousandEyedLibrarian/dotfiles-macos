@@ -250,7 +250,7 @@ vim.opt.redrawtime = 10000
 vim.opt.maxmempattern = 20000
 
 -- Create undo directory if it doesn't exist
-local undodir = vim.fn.expand("~/.vim/undodir")
+local undodir = vim.fn.expand("~/.nvim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
   vim.fn.mkdir(undodir, "p")
 end

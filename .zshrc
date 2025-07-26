@@ -14,6 +14,8 @@ function pipx_inject_requirements () {
     pipx runpip $1 install -r $2
 }
 
+unsetopt beep
+
 # gt - Go To directory function
 # Usage: gt "directory_name"
 # Searches for directories using fd and navigates to the first result
@@ -148,7 +150,7 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias x="exit"
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles-macos/ --work-tree=$HOME'
 alias search='fzf --preview="bat --color=always {}"'
 alias mkdir='mkdir -p'
 alias rebalance='cd ~/Sync/PersonalCode/PLNK ; source venv/bin/activate ; python3 rebalancer.py ; cd -'

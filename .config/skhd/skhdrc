@@ -2,10 +2,10 @@
 # Open applications with ctrl/option key
 # Applications I normally only have a single instance of don't force a new instance
 alt - m : open -a "Proton Mail"
-alt - f : open -na "Finder"
+alt - f : open -a "Finder"
 alt - i : ~/.config/skhd/zen-new-window.sh 
 alt - p : open -a "KeePassXC"
-alt - t : open -na "kitty"
+alt - t : open -a "kitty"
 
 # change layout
 alt - e : yabai -m space --layout bsp
