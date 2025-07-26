@@ -1,10 +1,10 @@
-<h3 align="center">Personal Dotfiles</h3>
+<h3 align="center">MacOS Dotfiles</h3>
 <br>
-<p align="center"><i>Configuration Files for a Custom Development Environment</i></p>
+<p align="center"><i>Personal configuration dotfiles for my MacOS environment. </i></p>
 
 ## About The Project
 
-This repository contains my personal dotfiles, which are used to configure my development environment. These dotfiles include settings and configurations for various tools and applications that I use on a daily basis. 
+This repository contains my personal dotfiles, which are used to configure my development environment.
 
 ## Getting Started
 
@@ -19,8 +19,8 @@ To set up your environment with these dotfiles, follow the instructions below.
 To initialise the dotfiles repository in your home directory and set up Git to manage your dotfiles, use the following commands:
 
 ```bash
-git init --bare $HOME/dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+git init --bare $HOME/dotfiles-macos
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles-macos/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 config add <file>  # Replace <file> with the specific dotfile you want to track
 config commit -m "Initial commit"
@@ -40,8 +40,8 @@ config pull
 To set up your dotfiles on a new system, follow these steps:
 
 ```bash
-git clone --bare git@github.com:CarterFaceySmith/dotfiles.git $HOME/dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+git clone --bare git@github.com:ThousandEyedLibrarian/dotfiles-macos.git $HOME/dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles-macos/ --work-tree=$HOME'
 config checkout
 ```
 
