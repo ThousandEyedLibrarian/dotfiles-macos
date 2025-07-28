@@ -90,7 +90,7 @@ alias mkdir='mkdir -p'
 
 alias sync-brain="cd ~/Sync/SecondBrain ; git pull ; git add . ; git commit -am \"Automated update.\" ; git push ; cd -"
 alias nsusb="java -jar ~/Sync/personalCode/ns-usbloader-7.2-m1.jar"
-alias glow="glow --config ~/.config/glow/glow.yml"
+alias glow="glow --config ~/.config/glow/glow.yml -s ~/.config/glow/gruvbox-retro.json"
 
 alias c="xclip"
 alias v="xclip -o"
