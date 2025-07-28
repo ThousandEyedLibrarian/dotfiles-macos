@@ -14,80 +14,10 @@ function pipx_inject_requirements () {
     pipx runpip $1 install -r $2
 }
 
-unsetopt beep
-
-# gt - Go To directory function
-# Usage: gt "directory_name"
-# Searches for directories using fd and navigates to the first result
+unsetopt beep # Get rid of the fucking shell water droplet sound
 
 function gt() {
-    # Check if argument is provided
-    if [ $# -eq 0 ]; then
-        echo "Usage: gt <directory_name>"
-        echo "Example: gt Documents"
-        return 1
-    fi
-
-    # Search for directories using fd
-    local search_term="$1"
-    local result=$(fd --type d --max-results 1 "$search_term" 2>/dev/null)
-    
-    # Check if any results were found
-    if [ -z "$result" ]; then
-        echo "No directory found matching: $search_term"
-        return 1
-    fi
-    
-    # Navigate to the directory
-    echo "Navigating to: $result"
-    cd "$result" || {
-        echo "Failed to navigate to: $result"
-        return 1
-    }
-    
-    # Show current location
-    pwd
-}
-
-# Alternative version with more search options
-function gtf() {
-    # gtf - Go To directory with Fuzzy matching
-    # Usage: gtf "partial_name"
-    
-    if [ $# -eq 0 ]; then
-        echo "Usage: gtf <partial_directory_name>"
-        return 1
-    fi
-
-    local search_term="$1"
-    
-    # Use fd with case-insensitive fuzzy matching
-    local result=$(fd --type d --ignore-case --max-results 1 ".*$search_term.*" 2>/dev/null)
-    
-    if [ -z "$result" ]; then
-        echo "No directory found matching: $search_term"
-        # Try a broader search
-        echo "Trying broader search..."
-        result=$(fd --type d --ignore-case --max-results 5 "$search_term" 2>/dev/null | head -1)
-        
-        if [ -z "$result" ]; then
-            echo "Still no results found."
-            return 1
-        fi
-    fi
-    
-    echo "Navigating to: $result"
-    cd "$result" || {
-        echo "Failed to navigate to: $result"
-        return 1
-    }
-    
-    pwd
-}
-
-# Show multiple results version
-function gts() {
-    # gts - Go To directory with Selection
+    # gt - Go To directory with Selection
     # Shows multiple results and lets you choose
     
     if [ $# -eq 0 ]; then
@@ -128,11 +58,13 @@ alias ls='ls -1' # short list
 alias ll='ls -lha' # long list all
 alias ld='ls -lhd */' # long list dirs
 alias nv="nvim"
+
 alias gs='git status -sb'
-alias gcc='git checkout'
+alias gco='git checkout'
 alias gcm='git checkout master'
 alias gaa='git add --all'
 alias gc='git commit -m $2'
+alias commit='git commit'
 alias gca='git commit -a'
 alias push='git push'
 alias gpo='git push origin'
@@ -144,19 +76,22 @@ alias ga='git add'
 alias gb='git branch'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gm='git merge'
+
 alias ..='cd ..'
 alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias x="exit"
+
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles-macos/ --work-tree=$HOME'
 alias search='fzf --preview="bat --color=always {}"'
 alias mkdir='mkdir -p'
-alias rebalance='cd ~/Sync/PersonalCode/PLNK ; source venv/bin/activate ; python3 rebalancer.py ; cd -'
+
 alias sync-brain="cd ~/Sync/SecondBrain ; git pull ; git add . ; git commit -am \"Automated update.\" ; git push ; cd -"
 alias nsusb="java -jar ~/Sync/personalCode/ns-usbloader-7.2-m1.jar"
-alias love="/Applications/love.app/Contents/MacOS/love"
+alias glow="glow --config ~/.config/glow/glow.yml"
+
 alias c="xclip"
 alias v="xclip -o"
 alias cs="xclip -selection clipboard"
