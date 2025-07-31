@@ -15,6 +15,8 @@ function pipx_inject_requirements () {
 }
 
 unsetopt beep # Get rid of the fucking shell water droplet sound
+CASE_SENSITIVE="false"
+
 
 function gt() {
     # gt - Go To directory with Selection
