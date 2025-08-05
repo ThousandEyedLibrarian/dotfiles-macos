@@ -597,6 +597,12 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent files' })
     end,
   },
+  -- Hardtime
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {}, -- Uses default config
+  },
 })
 
 -- ============================================================================
