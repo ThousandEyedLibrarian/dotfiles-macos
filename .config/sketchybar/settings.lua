@@ -1,22 +1,19 @@
 return {
-  paddings = 3,
-  group_paddings = 5,
+  paddings = 0,
+  group_paddings = 15,  -- More spacing between widgets
 
-  icons = "sf-symbols", -- alternatively available: NerdFont
+  icons = "NerdFont",
 
-  -- This is a font configuration for SF Pro and SF Mono (installed manually)
-  font = require("helpers.default_font"),
-
-  -- Alternatively, this is a font config for JetBrainsMono Nerd Font
-  -- font = {
-  --   text = "JetBrainsMono Nerd Font", -- Used for text
-  --   numbers = "JetBrainsMono Nerd Font", -- Used for numbers
-  --   style_map = {
-  --     ["Regular"] = "Regular",
-  --     ["Semibold"] = "Medium",
-  --     ["Bold"] = "SemiBold",
-  --     ["Heavy"] = "Bold",
-  --     ["Black"] = "ExtraBold",
-  --   },
-  -- },
+  -- JetBrainsMono Nerd Font (omarchy uses this)
+  font = {
+    text = "JetBrainsMono Nerd Font",
+    numbers = "JetBrainsMono Nerd Font",
+    style_map = {
+      ["Regular"] = "Regular",
+      ["Semibold"] = "Medium",
+      ["Bold"] = "Bold",
+      ["Heavy"] = "Bold",
+      ["Black"] = "ExtraBold",
+    },
+  },
 }

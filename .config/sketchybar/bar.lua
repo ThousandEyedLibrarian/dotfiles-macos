@@ -1,9 +1,11 @@
 local colors = require("colors")
 
--- Equivalent to the --bar domain
+-- Omarchy-style bar with subtle background
 sbar.bar({
-  height = 40,
-  color = colors.bar.bg,
-  padding_right = 2,
-  padding_left = 2,
+  height = 26,
+  color = 0xcc1d2021,  -- Semi-transparent dark background
+  padding_right = 12,
+  padding_left = 12,
+  blur_radius = 20,
+  shadow = false,
 })

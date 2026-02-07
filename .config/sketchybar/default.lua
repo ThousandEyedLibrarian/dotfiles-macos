@@ -1,52 +1,46 @@
 local settings = require("settings")
 local colors = require("colors")
 
--- Equivalent to the --default domain
+-- Omarchy style: minimal, no backgrounds, small font
 sbar.default({
   updates = "when_shown",
   icon = {
     font = {
       family = settings.font.text,
-      style = settings.font.style_map["Bold"],
-      size = 14.0
+      style = settings.font.style_map["Regular"],
+      size = 12.0
     },
     color = colors.white,
-    padding_left = settings.paddings,
-    padding_right = settings.paddings,
-    background = { image = { corner_radius = 9 } },
+    padding_left = 0,
+    padding_right = 0,
+    background = { image = { corner_radius = 0 } },
   },
   label = {
     font = {
       family = settings.font.text,
-      style = settings.font.style_map["Semibold"],
-      size = 13.0
+      style = settings.font.style_map["Regular"],
+      size = 12.0
     },
     color = colors.white,
-    padding_left = settings.paddings,
-    padding_right = settings.paddings,
+    padding_left = 0,
+    padding_right = 0,
   },
   background = {
-    height = 28,
-    corner_radius = 9,
-    border_width = 2,
-    border_color = colors.bg2,
-    image = {
-      corner_radius = 9,
-      border_color = colors.grey,
-      border_width = 1
-    }
+    height = 26,
+    corner_radius = 0,
+    border_width = 0,
+    color = colors.transparent,  -- No backgrounds (omarchy style)
   },
   popup = {
     background = {
-      border_width = 2,
-      corner_radius = 9,
-      border_color = colors.popup.border,
+      border_width = 0,
+      corner_radius = 0,
       color = colors.popup.bg,
       shadow = { drawing = true },
     },
-    blur_radius = 50,
+    blur_radius = 0,
   },
-  padding_left = 5,
-  padding_right = 5,
+  padding_left = 0,
+  padding_right = 0,
   scroll_texts = true,
 })

@@ -34,6 +34,14 @@ local icons = {
       disconnected = "􀙈",
       router = "􁓤",
     },
+    vpn = {
+      connected = "􀞡",
+      disconnected = "􀕧",
+    },
+    brew = {
+      default = "􀐛",
+      update = "􀁲",
+    },
     media = {
       back = "􀊊",
       forward = "􀊌",
@@ -75,6 +83,14 @@ local icons = {
       connected = "󰖩",
       disconnected = "󰖪",
       router = "Missing Icon"
+    },
+    vpn = {
+      connected = "󰒃",
+      disconnected = "󰦞",
+    },
+    brew = {
+      default = "󰏗",
+      update = "󰏔",
     },
     media = {
       back = "",

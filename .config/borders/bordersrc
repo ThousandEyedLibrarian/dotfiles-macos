@@ -1,0 +1,12 @@
+#!/bin/bash
+# Omarchy-style window borders (cyan)
+
+options=(
+	style=round
+	width=4.0
+	hidpi=on
+	active_color=0xff33ccff
+	inactive_color=0x00000000
+)
+
+borders "${options[@]}"

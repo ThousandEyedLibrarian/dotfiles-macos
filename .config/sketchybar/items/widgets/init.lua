@@ -1,4 +1,5 @@
+-- Right side widgets (matching shell config + VPN + Brew)
 require("items.widgets.battery")
 require("items.widgets.volume")
-require("items.widgets.wifi")
-require("items.widgets.cpu")
+require("items.widgets.vpn")
+require("items.widgets.brew")

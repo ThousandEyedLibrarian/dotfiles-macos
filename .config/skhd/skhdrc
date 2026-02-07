@@ -1,67 +1,121 @@
-####### Application Shortcuts #############
-# Open applications with ctrl/option key
-# Applications I normally only have a single instance of don't force a new instance
-alt - m : open -a "Proton Mail"
-alt - f : open -a "Finder"
-alt - i : ~/.config/skhd/zen-new-window.sh 
-alt - p : open -a "KeePassXC"
-alt - t : open -a "kitty"
+# Omarchy-style skhd configuration
+# Option (alt) = SUPER key equivalent
+# Pattern: alt = window management, alt+shift = apps, alt+ctrl = system
 
-# change layout
-alt - e : yabai -m space --layout bsp
-alt - s : yabai -m space --layout float
+####### Application Launchers (alt + shift) #############
+alt - return : /Applications/Ghostty.app/Contents/MacOS/ghostty
+alt + shift - return : open -a "Zen"
+alt + shift - f : open -a "Finder"
+alt + shift - m : open -a "Spotify"
+alt + shift - n : ~/.config/skhd/launch-nvim.sh
+alt + shift - t : ~/.config/skhd/launch-btop.sh
+alt + shift - d : ~/.config/skhd/launch-lazydocker.sh
+alt + shift - g : open -a "Signal"
+alt + shift - o : open -a "Obsidian"
+alt + shift - p : open -a "KeePassXC"
+alt + shift - e : open -a "Proton Mail"
+alt + shift - i : ~/.config/skhd/zen-new-window.sh
 
-# floating windows
-alt + shift - space : yabai -m window --toggle float
-cmd + alt + ctrl + shift - n  : yabai -m window --toggle float&&yabai -m window --grid 12:12:1:1:10:10
+####### Window Management #############
+# Close window (omarchy: SUPER + W)
+alt - w : yabai -m window --close
 
-# create desktop, move window and follow focus
-alt + shift + cmd - n : yabai -m space --create;\
-                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"; \
-                 yabai -m window --space "${index}";\
-                 yabai -m space --focus "${index}"
-
-# enter fullscreen mode for the focused container
-alt + ctrl + shift - f : yabai -m window --toggle zoom-fullscreen
-
-####### Shortcut Hotkeys #############
-# restart Yabi, SpaceBar, and SKHD
-alt + shift - r : killall yabai&&yabai --start-service&&skhd --reload
-
-# Rotate workspace clockwise
-cmd + alt + ctrl + shift - 0x32 : yabai -m space --rotate 90
-
-# change focus
+# Focus movement (omarchy: SUPER + arrows / hjkl)
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
-# (alt) change focus (using arrow keys)
 alt - left  : yabai -m window --focus west
 alt - down  : yabai -m window --focus south
 alt - up    : yabai -m window --focus north
 alt - right : yabai -m window --focus east
 
-# Switch spaces and move windows
-alt - 1: yabai -m space --focus 1
-alt - 2: yabai -m space --focus 2
-alt - 3: yabai -m space --focus 3
-alt - 4: yabai -m space --focus 4
-alt - 5: yabai -m space --focus 5
-alt - 6: yabai -m space --focus 6
-alt - 7: yabai -m space --focus 7
-alt - 8: yabai -m space --focus 8
-alt - 9: yabai -m space --focus 9
-alt - 0: yabai -m space --focus 10
+# Window swapping (omarchy: SUPER + SHIFT + arrows)
+alt + shift - left  : yabai -m window --swap west
+alt + shift - down  : yabai -m window --swap south
+alt + shift - up    : yabai -m window --swap north
+alt + shift - right : yabai -m window --swap east
 
-alt + shift - 1: yabai -m window --space 1 && yabai -m space --focus 1
-alt + shift - 2: yabai -m window --space 2 && yabai -m space --focus 2
-alt + shift - 3: yabai -m window --space 3 && yabai -m space --focus 3
-alt + shift - 4: yabai -m window --space 4 && yabai -m space --focus 4
-alt + shift - 5: yabai -m window --space 5 && yabai -m space --focus 5
-alt + shift - 6: yabai -m window --space 6 && yabai -m space --focus 6
-alt + shift - 7: yabai -m window --space 7 && yabai -m space --focus 7
-alt + shift - 8: yabai -m window --space 8 && yabai -m space --focus 8
-alt + shift - 9: yabai -m window --space 9 && yabai -m space --focus 9
-alt + shift - 0: yabai -m window --space 10 && yabai -m space --focus 10
-   
+# Window resize (omarchy: SUPER + minus/equal)
+alt - 0x1B : yabai -m window --resize left:-50:0; yabai -m window --resize right:-50:0
+alt - 0x18 : yabai -m window --resize left:50:0; yabai -m window --resize right:50:0
+alt + shift - 0x1B : yabai -m window --resize top:0:-50; yabai -m window --resize bottom:0:-50
+alt + shift - 0x18 : yabai -m window --resize top:0:50; yabai -m window --resize bottom:0:50
+
+####### Floating & Fullscreen #############
+# Toggle float (omarchy: SUPER + SHIFT + V)
+alt + shift - space : yabai -m window --toggle float
+
+# Toggle fullscreen (omarchy: SUPER + F)
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# Layout changes
+alt - e : yabai -m space --layout bsp
+alt - s : yabai -m space --layout float
+
+# Float and center (grid)
+cmd + alt + ctrl + shift - n : yabai -m window --toggle float && yabai -m window --grid 12:12:1:1:10:10
+
+####### Workspace Navigation #############
+# Focus workspace (omarchy: SUPER + 1-0)
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
+
+# Move window to workspace + follow (omarchy: SUPER + SHIFT + 1-0)
+alt + shift - 1 : yabai -m window --space 1 && yabai -m space --focus 1
+alt + shift - 2 : yabai -m window --space 2 && yabai -m space --focus 2
+alt + shift - 3 : yabai -m window --space 3 && yabai -m space --focus 3
+alt + shift - 4 : yabai -m window --space 4 && yabai -m space --focus 4
+alt + shift - 5 : yabai -m window --space 5 && yabai -m space --focus 5
+alt + shift - 6 : yabai -m window --space 6 && yabai -m space --focus 6
+alt + shift - 7 : yabai -m window --space 7 && yabai -m space --focus 7
+alt + shift - 8 : yabai -m window --space 8 && yabai -m space --focus 8
+alt + shift - 9 : yabai -m window --space 9 && yabai -m space --focus 9
+alt + shift - 0 : yabai -m window --space 10 && yabai -m space --focus 10
+
+# Tab through workspaces (omarchy: SUPER + TAB)
+alt - tab : yabai -m space --focus next || yabai -m space --focus first
+alt + shift - tab : yabai -m space --focus prev || yabai -m space --focus last
+
+# Create desktop and move window (preserved from original)
+alt + shift + cmd - n : yabai -m space --create; \
+    index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"; \
+    yabai -m window --space "${index}"; \
+    yabai -m space --focus "${index}"
+
+####### System Controls (alt + ctrl) #############
+# Lock screen (omarchy: SUPER + CTRL + L)
+alt + ctrl - l : pmset displaysleepnow
+
+# Night Shift toggle (omarchy: SUPER + CTRL + N)
+alt + ctrl - n : ~/.config/skhd/toggle-nightshift.sh
+
+# System settings shortcuts
+alt + ctrl - a : open "x-apple.systempreferences:com.apple.preference.sound"
+alt + ctrl - b : open "x-apple.systempreferences:com.apple.preferences.Bluetooth"
+alt + ctrl - w : open "x-apple.systempreferences:com.apple.preference.network"
+
+# Activity monitor / btop (omarchy: SUPER + CTRL + T)
+alt + ctrl - t : ~/.config/skhd/launch-btop.sh
+
+####### Aesthetics #############
+# Toggle gaps (omarchy: SUPER + SHIFT + BACKSPACE)
+alt + shift - 0x33 : ~/.config/skhd/toggle-gaps.sh
+
+# Rotate workspace (preserved from original)
+cmd + alt + ctrl + shift - 0x32 : yabai -m space --rotate 90
+
+####### Utilities #############
+# Restart yabai + skhd
+alt + shift - r : killall yabai && yabai --start-service && skhd --reload
+
+# Clipboard history (via Raycast)
+alt + ctrl - v : open "raycast://extensions/raycast/clipboard-history/clipboard-history"

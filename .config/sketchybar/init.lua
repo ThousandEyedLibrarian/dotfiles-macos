@@ -11,6 +11,9 @@ require("default")
 require("items")
 sbar.end_config()
 
+-- Initial brew update (run in background since it takes a few seconds)
+os.execute("/Users/carter/.config/sketchybar/plugins/brew_update.sh &")
+
 -- Run the event loop of the sketchybar module (without this there will be no
 -- callback functions executed in the lua module)
 sbar.event_loop()

@@ -1,7 +1,4 @@
-require("items.apple")
-require("items.menus")
+-- Simplified layout matching shell config + VPN
 require("items.spaces")
-require("items.front_app")
 require("items.calendar")
 require("items.widgets")
-require("items.media")
