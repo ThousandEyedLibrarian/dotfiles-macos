@@ -43,8 +43,8 @@ alias x='exit'
 
 alias sync-brain="cd ~/Sync/SecondBrain ; git pull ; git add . ; git commit -am \"Automated update.\" ; git push ; cd -"
 
-alias c="xclip"
-alias v="xclip -o"
+alias xc="xclip"
+alias xv="xclip -o"
 alias cs="xclip -selection clipboard"
 alias vs="xclip -o -selection clipboard"
 
