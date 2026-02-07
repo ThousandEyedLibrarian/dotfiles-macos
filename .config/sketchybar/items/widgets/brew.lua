@@ -36,7 +36,7 @@ brew:subscribe({"routine", "forced", "system_woke"}, function()
   os.execute(UPDATE_SCRIPT .. " &")
 end)
 
--- Click to upgrade packages in Kitty terminal
+-- Click to upgrade packages in Ghostty terminal
 brew:subscribe("mouse.clicked", function()
-  sbar.exec('kitty -e /bin/zsh -c "/opt/homebrew/bin/brew upgrade; echo; echo Done. Press enter to close.; read"')
+  sbar.exec('open -na Ghostty --args -e /bin/zsh -c "/opt/homebrew/bin/brew upgrade && /opt/homebrew/bin/brew cleanup --prune=7 && /Users/carter/.config/sketchybar/plugins/brew_update.sh; echo; echo Done. Press enter to close.; read"')
 end)

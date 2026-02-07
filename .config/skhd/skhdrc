@@ -3,7 +3,7 @@
 # Pattern: alt = window management, alt+shift = apps, alt+ctrl = system
 
 ####### Application Launchers (alt + shift) #############
-alt - return : /Applications/Ghostty.app/Contents/MacOS/ghostty
+alt - return : ~/.config/skhd/launch-ghostty.sh
 alt + shift - return : open -a "Zen"
 alt + shift - f : open -a "Finder"
 alt + shift - m : open -a "Spotify"
