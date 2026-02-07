@@ -50,6 +50,9 @@ alias vs="xclip -o -selection clipboard"
 # Environment variables
 export PATH="$PATH:$HOME/.local/bin"
 
+# Rust/Cargo
+. "$HOME/.cargo/env"
+
 export GPG_TTY=$(tty)
 
 # If you need Android development tools, update these paths:
