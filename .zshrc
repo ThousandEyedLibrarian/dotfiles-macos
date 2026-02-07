@@ -39,6 +39,7 @@ alias .5='cd ../../../../..'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles-macos/ --work-tree=$HOME'
 alias search='fzf --preview="bat --color=always {}"'
 alias mkdir='mkdir -p'
+alias x='exit'
 
 alias sync-brain="cd ~/Sync/SecondBrain ; git pull ; git add . ; git commit -am \"Automated update.\" ; git push ; cd -"
 

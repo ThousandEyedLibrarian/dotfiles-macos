@@ -2,6 +2,10 @@
 	email = carter@librarian.wiki
 	name = Librarian
 	useConfigOnly = true
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[gpg]
+	format = ssh
 
 [filter "lfs"]
 	required = true
@@ -38,8 +42,8 @@
 	autoSetupRemote = true
 
 [commit]
-	gpgsign = false
-	template = ~/Sync/personalCode/commit-conventions.txt
+	gpgsign = true
+	template = ~/.commit-conventions.txt
 
 [status]
 	short = true
