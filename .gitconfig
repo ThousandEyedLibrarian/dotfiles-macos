@@ -1,5 +1,5 @@
 [user]
-	email = carterfs@pm.me
+	email = carter@librarian.wiki
 	name = Librarian
 	useConfigOnly = true
 
@@ -32,8 +32,6 @@
 	prune = true
 
 [safe]
-	directory = /Users/carter/.local/share/nvim/
-	directory = /Users/carter/.local/share/nvim/lazy/
 	directory = *
 
 [push]
