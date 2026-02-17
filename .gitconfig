@@ -18,7 +18,7 @@
 
 [core]
 	editor = nvim +16 -c 'startinsert'
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/carter/.gitignore_global
 	compression = 9
 	filemode = false
 
