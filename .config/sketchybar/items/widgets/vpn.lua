@@ -34,7 +34,7 @@ local function update_vpn_status()
     local connected = status:gsub("%s+", "") == "connected"
 
     if connected then
-      sbar.exec("curl -s --max-time 2 https://ifconfig.co/country-iso 2>/dev/null | tr -d '\\n'", function(country)
+      sbar.exec("curl -s --max-time 2 'http://ip-api.com/json/?fields=countryCode' 2>/dev/null | sed -n 's/.*\"countryCode\":\"\\([A-Z]*\\)\".*/\\1/p' | tr -d '\\n'", function(country)
         local country_code = (country ~= "" and #country == 2) and country or "??"
         vpn:set({
           icon = {
