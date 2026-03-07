@@ -7,4 +7,4 @@ cd "$HOME/.config/sketchybar"
 export LUA_CPATH="$HOME/.local/share/sketchybar_lua/?.so"
 
 # Run Lua config (exec replaces shell, keeping event loop alive)
-exec lua init.lua
+exec /opt/homebrew/opt/lua@5.4/bin/lua-5.4 init.lua

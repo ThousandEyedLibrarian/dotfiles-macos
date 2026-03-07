@@ -48,6 +48,9 @@ palette = 15=#ebdbb2
 # Keybindings
 quit-after-last-window-closed = true
 
+# Disable auto secure input so skhd can capture hotkeys
+macos-auto-secure-input = false
+
 keybind = super+shift+enter=new_window
 keybind = shift+insert=paste_from_clipboard
 keybind = control+insert=copy_to_clipboard
