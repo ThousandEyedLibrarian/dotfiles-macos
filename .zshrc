@@ -69,3 +69,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 eval "$(alias sketchybar="$HOME/.config/sketchybar/set-bar-mode.sh")"
+
+# Claude Code tutor mode
+alias tutor='claude --agent tutor --disallowedTools "Write,Edit,MultiEdit,NotebookEdit" --permission-mode plan'
