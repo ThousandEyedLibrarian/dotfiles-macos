@@ -38,5 +38,5 @@ end)
 
 -- Click to upgrade packages in Ghostty terminal
 brew:subscribe("mouse.clicked", function()
-  sbar.exec('open -na Ghostty --args -e /bin/zsh -c "/opt/homebrew/bin/brew upgrade && /opt/homebrew/bin/brew cleanup --prune=7 && /Users/carter/.config/sketchybar/plugins/brew_update.sh; echo; echo Done. Press enter to close.; read"')
+  sbar.exec('open -na Ghostty --args -e /bin/zsh -c "/opt/homebrew/bin/brew upgrade && /opt/homebrew/bin/brew cleanup --prune=7 && /Users/carter/.config/sketchybar/plugins/brew_update.sh force; echo; echo Done. Press enter to close.; read"')
 end)
