@@ -1,7 +1,6 @@
--- Right side widgets (matching shell config + VPN + Brew)
+-- Right side widgets
 require("items.widgets.battery")
 require("items.widgets.volume")
-require("items.widgets.vpn")
 require("items.widgets.brew")
 require("items.widgets.cpu")
 require("items.widgets.pomodoro")
