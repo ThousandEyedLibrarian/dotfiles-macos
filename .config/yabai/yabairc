@@ -26,14 +26,17 @@ yabai -m config external_bar               all:30:0       \
                 mouse_action2              resize         \
                 mouse_drop_action          swap           \
                                                           \
-                top_padding                10             \
-                bottom_padding             10             \
-                left_padding               10             \
-                right_padding              10             \
+                top_padding                9             \
+                bottom_padding             9             \
+                left_padding               9             \
+                right_padding              9             \
                 window_gap                 5
 
 # Default layout
 yabai -m config layout bsp
+
+# Match the top offset to sketchybar's current visibility (toggle-sketchybar.sh keeps it in sync)
+[ "$(sketchybar --query bar 2>/dev/null | jq -r '.hidden')" = "on" ] && yabai -m config external_bar all:0:0
 
 # Window rules: System apps that should float
 yabai -m rule --add app="^System Preferences$" manage=off

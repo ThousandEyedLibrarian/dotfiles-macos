@@ -44,7 +44,7 @@ alt + shift - 0x18 : yabai -m window --resize top:0:50; yabai -m window --resize
 
 ####### Floating & Fullscreen #############
 # Toggle float (omarchy: SUPER + SHIFT + V)
-alt + shift - space : yabai -m window --toggle float
+alt + shift - v : yabai -m window --toggle float
 
 # Toggle fullscreen (omarchy: SUPER + F)
 alt - f : yabai -m window --toggle zoom-fullscreen
@@ -109,6 +109,9 @@ alt + ctrl - t : ~/.config/skhd/launch-btop.sh
 ####### Aesthetics #############
 # Toggle gaps (omarchy: SUPER + SHIFT + BACKSPACE)
 alt + shift - 0x33 : ~/.config/skhd/toggle-gaps.sh
+
+# Toggle sketchybar (omarchy: SUPER + SHIFT + SPACE)
+alt + shift - space : ~/.config/skhd/toggle-sketchybar.sh
 
 # Rotate workspace (preserved from original)
 cmd + alt + ctrl + shift - 0x32 : yabai -m space --rotate 90
